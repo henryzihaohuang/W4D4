@@ -40,3 +40,15 @@ describe "#my_transpose" do
     end
 
 end
+
+
+describe "#stock_picker" do
+    it "should accept an array as an argument." do
+        expect { stock_picker([4, 7, 3, 9, 2, 7, 1]) }.not_to raise_error
+    end
+    it "should find and return an array of indices representing most profitable pair of days" do
+        expect(stock_picker([4, 7, 3, 9, 2, 7, 1])).to eq([2, 3])
+        expect(stock_picker([6, 1, 2, 4, 7, 8])).to eq([1, 5])
+        expect(stock_picker([8, 4, 6, 2, 5, 3, 6])).to eq([3, 6])
+    end
+end

@@ -37,3 +37,19 @@ def my_transpose(arr)
     new_arr
 end 
 
+def stock_picker(arr)
+    greatest_diff = 0
+    indices_arr = []
+
+    arr.each_with_index do |ele, i|
+        arr.each_with_index do |ele2, i2|
+            diff = ele2 - ele 
+            if i2 > i && (diff) > greatest_diff
+                greatest_diff = diff
+                indices_arr = [i, i2]
+            end
+        end
+    end
+
+    indices_arr
+end
