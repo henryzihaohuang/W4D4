@@ -8,13 +8,13 @@ class Game
     def get_input
         until won?
             begin
+                p board
                 puts "please enter a starting position (i.e. 0, 1, 2) : "
-                start_pos = gets.chomp 
-debugger
+                start_pos = gets.chomp.to_i
+                
                 puts "please enter a ending position (i.e. 0, 1, 2) : "
-                end_pos = gets.chomp
-        
-debugger
+                end_pos = gets.chomp.to_i
+    
                 play_move(start_pos, end_pos) if valid_move?(start_pos, end_pos)
             rescue
                 puts "Not a valid move, please try again."
@@ -29,19 +29,18 @@ debugger
         if !board[pos].empty? && pos.between?(0, 2)
             true 
         else
-            puts "test2"
             raise "Not a valid start"
-            
         end
     end
 
     def valid_end?(pos)
-        pos.between?(0,2)
+        if  pos.between?(0,2)
+            true
+        else
+            raise "Not a valid end"
     end
-require'byebug'
+
     def valid_move?(start_pos, end_pos)
-        debugger
-        #first disk in start array < first disk in end array
         if board[end_pos].empty? || board[start_pos][0] < board[end_pos][0]
             return true 
         else
@@ -50,8 +49,7 @@ require'byebug'
     end
 
     def play_move(start_pos, end_pos)
-        @board = board[end_pos].unshift(board[start_pos].shift)
-        @board[start_pos][0].delete
+        board[end_pos].unshift(board[start_pos].shift)
     end
 
     def won?
@@ -60,5 +58,5 @@ require'byebug'
             true
         end
     end
-
+end
 end
