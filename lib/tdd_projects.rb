@@ -53,3 +53,4 @@ def stock_picker(arr)
 
     indices_arr
 end
+
